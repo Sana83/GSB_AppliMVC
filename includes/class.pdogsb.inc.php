@@ -90,7 +90,7 @@ class PdoGsb
      *
      * @return l'id, le nom et le prénom sous la forme d'un tableau associatif
      */
-    public function getInfosVisiteur($login, $mdp)
+    public function getInfosVisiteur($login)
     {
         $requetePrepare = PdoGsb::$monPdo->prepare(
             'SELECT visiteur.id AS id, visiteur.nom AS nom, '
@@ -113,6 +113,36 @@ class PdoGsb
         'SELECT mdp '
         . 'FROM visiteur '
         . 'WHERE visiteur.login = :unLogin'
+    );
+    $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+    $requetePrepare->execute();
+    return $requetePrepare->fetch()['mdp'];
+    }
+    
+    //retourne les informations d'un visiteur
+    public function getInfosComptable($login)
+    {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+            'SELECT comptable.id AS id, comptable.nom AS nom, '
+            . 'comptable.prenom AS prenom, comptable.email as email '
+            . 'FROM comptable '
+            . 'WHERE comptable.login = :unLogin'
+        );
+        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+            $requetePrepare->execute();
+            return $requetePrepare->fetch();
+    }
+    
+    /**
+     * Ajouter une méthode de récupération du mot de passe hashé d'un compte.
+     * @param type $login
+     * @return type
+     */
+    public function getMdpComptable($login) {
+    $requetePrepare = PdoGsb::$monPdo->prepare(
+        'SELECT mdp '
+        . 'FROM comptable '
+        . 'WHERE comptable.login = :unLogin'
     );
     $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
     $requetePrepare->execute();

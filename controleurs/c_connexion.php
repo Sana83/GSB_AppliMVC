@@ -30,7 +30,7 @@ switch ($action) {
         if (!password_verify($mdp, $pdo->getMdpVisiteur($login))) {
             ajouterErreur('Login ou mot de passe incorrect');
             include 'vues/v_erreurs.php';
-            include 'vues/v_connexion.php';
+            include 'vues/v_connexion.php';   
         } else {
             $id = $visiteur['id'];
             $nom = $visiteur['nom'];
