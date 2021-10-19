@@ -11,6 +11,7 @@
 $pdo = new PDO('mysql:host=localhost;dbname=gsb_frais', 'root', '');
 $pdo->query('SET CHARACTER SET utf8');
 
+//Hacher les mots de passe avec password_hash() pour les visiteurs
 function getLesVisiteurs($pdo){
     $req = 'select id, mdp from visiteur';
     $res = $pdo->query($req);
@@ -24,4 +25,5 @@ foreach($visiteurs as $visiteur) {
     $req = "UPDATE visiteur SET mdp='" . $hashMdp . "' WHERE id='" . $visiteur['id'] . "';";
     $pdo->exec($req);
 };
+
 
