@@ -81,8 +81,70 @@ class PdoGsb
         }
         return PdoGsb::$monPdoGsb;
     }
-
+    
     /**
+     * Ajouter une méthode de récupération du mot de passe hashé d'un compte.
+     * @param type $login
+     * @return type
+     */
+    public function getMdpVisiteur($login) {
+    $requetePrepare = PdoGsb::$monPdo->prepare(
+        'SELECT mdp '
+        . 'FROM visiteur '
+        . 'WHERE visiteur.login = :unLogin'
+    );
+    $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+    $requetePrepare->execute();
+    return $requetePrepare->fetch()['mdp'];
+    }
+    
+    /**
+     * Ajouter une méthode de récupération du mot de passe hashé d'un compte.
+     * @param type $login
+     * @return type
+     */
+    public function getMdpComptable($login) {
+    $requetePrepare = PdoGsb::$monPdo->prepare(
+        'SELECT mdp '
+        . 'FROM comptable '
+        . 'WHERE comptable.login = :unLogin'
+    );
+    $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+    $requetePrepare->execute();
+    return $requetePrepare->fetch()['mdp'];
+    }
+    
+    //en plus
+    public function verifMdp($login, $mdp, $table){
+        if ($table == 'visiteur'){
+            $result = $this->recupMdpVisiteur($login);
+        }
+        else{
+            $result = $this->recupMdpComptable($login);
+        }
+        if ($mdpverif === $result['mdp']){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    //retourne les informations d'un visiteur
+    public function getInfosComptable($login)
+    {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+            'SELECT comptable.id AS id, comptable.nom AS nom, '
+            . 'comptable.prenom AS prenom, comptable.email as email '
+            . 'FROM comptable '
+            . 'WHERE comptable.login = :unLogin'
+        );
+        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
+            $requetePrepare->execute();
+            return $requetePrepare->fetch();
+    }
+    
+     /**
      * Retourne les informations d'un visiteur
      *
      * @param String $login Login du visiteur
@@ -103,51 +165,50 @@ class PdoGsb
             return $requetePrepare->fetch();
     }
     
-    /**
-     * Ajouter une méthode de récupération du mot de passe hashé d'un compte.
-     * @param type $login
-     * @return type
-     */
-    public function getMdpVisiteur($login) {
-    $requetePrepare = PdoGsb::$monPdo->prepare(
-        'SELECT mdp '
-        . 'FROM visiteur '
-        . 'WHERE visiteur.login = :unLogin'
-    );
-    $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
-    $requetePrepare->execute();
-    return $requetePrepare->fetch()['mdp'];
-    }
-    
-    //retourne les informations d'un visiteur
-    public function getInfosComptable($login)
-    {
-        $requetePrepare = PdoGsb::$monPdo->prepare(
-            'SELECT comptable.id AS id, comptable.nom AS nom, '
-            . 'comptable.prenom AS prenom, comptable.email as email '
-            . 'FROM comptable '
-            . 'WHERE comptable.login = :unLogin'
+    public function setCodeA2f($id, $code) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+            'UPDATE visiteur '
+            . 'SET codea2f = :unCode '
+            . 'WHERE visiteur.id = :unIdVisiteur '
         );
-        $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
-            $requetePrepare->execute();
-            return $requetePrepare->fetch();
+        $requetePrepare->bindParam(':unCode', $code, PDO::PARAM_STR);
+        $requetePrepare->bindParam(':unIdVisiteur', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
     }
     
-    /**
-     * Ajouter une méthode de récupération du mot de passe hashé d'un compte.
-     * @param type $login
-     * @return type
-     */
-    public function getMdpComptable($login) {
-    $requetePrepare = PdoGsb::$monPdo->prepare(
-        'SELECT mdp '
-        . 'FROM comptable '
-        . 'WHERE comptable.login = :unLogin'
-    );
-    $requetePrepare->bindParam(':unLogin', $login, PDO::PARAM_STR);
-    $requetePrepare->execute();
-    return $requetePrepare->fetch()['mdp'];
+    public function setCodeA2fComptable($id, $code) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+            'UPDATE comptable '
+            . 'SET codea2f = :unCode '
+            . 'WHERE comptable.id = :unIdComptable '
+        );
+        $requetePrepare->bindParam(':unCode', $code, PDO::PARAM_INT);
+        $requetePrepare->bindParam(':unIdComptable', $id, PDO::PARAM_STR);
+        $requetePrepare->execute();
     }
+    
+    public function getCodeVisiteur($id) {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+            'SELECT visiteur.codea2f AS codea2f '
+            . 'FROM visiteur '
+            . 'WHERE visiteur.id = :unId'
+    );
+    $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
+    $requetePrepare->execute();
+    return $requetePrepare->fetch()['codea2f'];
+    }
+    
+    public function getCodeComptable($id) {
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+            'SELECT comptable.codea2f AS codea2f '
+            . 'FROM comptable '
+            . 'WHERE comptable.id = :unId'
+    );
+    $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
+    $requetePrepare->execute();
+    return $requetePrepare->fetch()['codea2f'];
+    }
+    
     
     /**
      * Retourne sous forme d'un tableau associatif toutes les lignes de frais
@@ -530,27 +591,5 @@ class PdoGsb
         $requetePrepare->bindParam(':unIdVisiteur', $idVisiteur, PDO::PARAM_STR);
         $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
         $requetePrepare->execute();
-    }
-    
-    public function setCodeA2f($id, $code) {
-        $requetePrepare = PdoGSB::$monPdo->prepare(
-            'UPDATE visiteur '
-            . 'SET codea2f = :unCode '
-            . 'WHERE visiteur.id = :unIdVisiteur '
-        );
-        $requetePrepare->bindParam(':unCode', $code, PDO::PARAM_STR);
-        $requetePrepare->bindParam(':unIdVisiteur', $id, PDO::PARAM_STR);
-        $requetePrepare->execute();
-    }
-    
-    public function getCodeVisiteur($id) {
-        $requetePrepare = PdoGsb::$monPdo->prepare(
-            'SELECT visiteur.codea2f AS codea2f '
-            . 'FROM visiteur '
-            . 'WHERE visiteur.id = :unId'
-    );
-    $requetePrepare->bindParam(':unId', $id, PDO::PARAM_STR);
-    $requetePrepare->execute();
-    return $requetePrepare->fetch()['codea2f'];
     }
 }

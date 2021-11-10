@@ -27,23 +27,44 @@ switch ($action) {
         $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
         $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
         $visiteur = $pdo->getInfosVisiteur($login, $mdp);
-        if (!password_verify($mdp, $pdo->getMdpVisiteur($login))) {
+        $comptable = $pdo->getInfosComptable($login, $mdp);
+        if (!is_array($visiteur) and !is_array($comptable) ) {
             ajouterErreur('Login ou mot de passe incorrect');
             include 'vues/v_erreurs.php';
-            include 'vues/v_connexion.php';   
-        } else {
+            include 'vues/v_connexion.php';
+        } elseif (is_array($visiteur) and !is_array($comptable)) {
             $id = $visiteur['id'];
             $nom = $visiteur['nom'];
             $prenom = $visiteur['prenom'];
-            connecter($id, $nom, $prenom);
+            connecter($id, $nom, $prenom, 'visiteur');
             //header('Location: index.php');
             $email = $visiteur['email'];
             $code = rand(1000, 9999);
             $pdo->setCodeA2f($id,$code);
             mail($email, '[GSB-AppliFrais] Code de vérification', "Code : $code");
             include 'vues/v_code2facteurs.php';
+        
+        } else {
+            $id = $comptable['id'];
+            $nom = $comptable['nom'];
+            $prenom = $comptable['prenom'];
+            connecter($id, $nom, $prenom, 'comptable');
+            //header('Location: index.php');
+            $email = $comptable['email'];
+            $code = rand(1000, 9999);
+            $pdo->setCodeA2fComptable($id,$code);
+            mail($email, '[GSB-AppliFrais] Code de vérification', "Code : $code");
+            include 'vues/v_code2facteurs.php';
         }
         break;
+ 
+//            $email = $visiteur['email'];
+//            $code = rand(1000, 9999);
+//            $pdo->setCodeA2f($id,$code);
+//            mail($email, '[GSB-AppliFrais] Code de vérification', "Code : $code");
+//            include 'vues/v_code2facteurs.php';
+//        }
+//        break;
 
     case 'valideA2fConnexion':
         $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_STRING);
@@ -51,7 +72,7 @@ switch ($action) {
             ajouterErreur('Code de vérification incorrect');
             include 'vues/v_erreurs.php';
             include 'vues/v_code2facteurs.php';
-        } else {
+        }else {
             connecterA2f($code);
             header('Location: index.php');
         }
