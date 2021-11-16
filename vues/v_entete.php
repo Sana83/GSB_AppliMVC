@@ -23,14 +23,22 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
-        <link href="./styles/style.css" rel="stylesheet">
+        <?php
+        if ($estConnecte){
+        ?>
+            <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
+            <link href="./styles/style.css" rel="stylesheet">
+        <?php
+        } elseif ($estConnecteComptable) { ?>
+            <link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
+            <link href="./styles/style.css" rel="stylesheet">
+        }
     </head>
     <body>
         <div class="container">
             <?php
             $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_STRING);
-            if ($estConnecte) {
+            if ($estConnecte || $estConnecteComptable) {
                 ?>
             <div class="header">
                 <div class="row vertical-align">
@@ -83,3 +91,4 @@
                 </h1>
                 <?php
             }
+        }

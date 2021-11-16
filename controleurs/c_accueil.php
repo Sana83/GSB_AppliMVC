@@ -18,11 +18,21 @@
 //$to = 'admin@wampserver.com';
 //$subject = 'Connection à votre GSB';
 //$message = "Bonjour " . $_SESSION['prenom'] . "! Unes nouvelle connaxion a été identifié. Si c'est vous...";
-     
+//     
+//if ($estConnecte) {
+////    $message = "Bonjour " . $_SESSION['prenom'] . "! Unes nouvelle connaxion a été identifié. Si c'est vous...";
+////    mail($to, $subject, $message);
+//    include 'vues/v_accueil.php';
+//} elseif ($estConnecteComptable) {
+//    include 'vues/v_accueilComptable.php';
+//} else {
+//    include 'vues/v_connexion.php';
+//}
+
 if ($estConnecte) {
-//    $message = "Bonjour " . $_SESSION['prenom'] . "! Unes nouvelle connaxion a été identifié. Si c'est vous...";
-//    mail($to, $subject, $message);
     include 'vues/v_accueil.php';
+} elseif ($estConnecteComptable) {
+    include 'vues/v_accueilComptable.php';
 } else {
     include 'vues/v_connexion.php';
 }
