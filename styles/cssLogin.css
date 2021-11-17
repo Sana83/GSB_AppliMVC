@@ -1,0 +1,23 @@
+/* Style CSS pour le TD05 Tableaux HTML du Bloc 1.3 du BTS SIO */
+/* CLERC Pierre-François 28/01/2019, modifier le 14/01/2021 */
+table
+{
+    border-collapse:collapse;
+}
+
+td, th
+{
+    border: 1px solid #f3f3f3;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+th
+{
+    background-color: #f35b69
+}
+
+thead th
+{
+    background-color: #6d9eeb;
+}

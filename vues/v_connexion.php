@@ -51,3 +51,42 @@
         </div>
     </div>
 </div>
+<!--    <div class="idDemo">
+        <table>
+            <tr>
+            <th></th>
+                <td class="titre">Login </td>
+                <td class="titre">Mot de passe</td>
+            </tr>
+            <tr>
+                <td class="titre">Comptable </td>
+                <td> thoarau</td>
+                <td> owxep5</td>
+            </tr>
+            <tr>
+                <td class="titre">Visiteur</td>
+                <td>dandre</td>
+                <td>opgg5</td>
+            </tr>
+        </table>
+    </div>-->
+<!--<link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
+            <link href="./styles/style.css" rel="stylesheet">-->
+<link href="stylesheet" href="./styles/cssLogin.css">
+    <table>
+        <tr>
+            <th></th>
+            <th>Login</th>
+            <th>Mot de passe</th>
+        </tr>
+        <tr>
+            <td>Comptable</td>
+            <td>thaoarau</td>
+            <td>owxep5</td>
+        </tr>
+        <tr>
+            <td>Visiteur</td>
+            <td>dandre</td>
+            <td>oppg5</td>
+        </tr>
+    </table>

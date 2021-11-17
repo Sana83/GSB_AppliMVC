@@ -32,7 +32,9 @@
         } elseif ($estConnecteComptable) { ?>
             <link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
             <link href="./styles/style.css" rel="stylesheet">
+        <?php
         }
+        ?>
     </head>
     <body>
         <div class="container">
@@ -91,4 +93,4 @@
                 </h1>
                 <?php
             }
-        }
+        
