@@ -30,7 +30,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
                                 <input class="form-control" placeholder="Login"
-                                       name="login" type="text" maxlength="45">
+                                       name="login" type="text" maxlength="45" value="thoarau">
                             </div>
                         </div>
                         <div class="form-group">
@@ -40,7 +40,7 @@
                                 </span>
                                 <input class="form-control"
                                        placeholder="Mot de passe" name="mdp"
-                                       type="password" maxlength="45">
+                                       type="password" maxlength="45" value="owxep5">
                             </div>
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
@@ -73,20 +73,24 @@
 <!--<link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
             <link href="./styles/style.css" rel="stylesheet">-->
 <link href="stylesheet" href="./styles/cssLogin.css">
-    <table>
-        <tr>
-            <th></th>
-            <th>Login</th>
-            <th>Mot de passe</th>
-        </tr>
-        <tr>
-            <td>Comptable</td>
-            <td>thaoarau</td>
-            <td>owxep5</td>
-        </tr>
-        <tr>
-            <td>Visiteur</td>
-            <td>dandre</td>
-            <td>oppg5</td>
-        </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Login</th>
+                <th>Mot de passe</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Comptable</td>
+                <td>thaoarau</td>
+                <td>owxep5</td>
+            </tr>
+            <tr>
+                <td>Visiteur</td>
+                <td>dandre</td>
+                <td>oppg5</td>
+            </tr>
+        </tbody>
     </table>

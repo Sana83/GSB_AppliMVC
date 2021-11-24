@@ -23,13 +23,10 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="./styles/style.css" rel="stylesheet">
         <?php
-        if ($estConnecte){
-        ?>
-            <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
-            <link href="./styles/style.css" rel="stylesheet">
-        <?php
-        } elseif ($estConnecteComptable) { ?>
+        if ($estConnecteComptable) { ?>
             <link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
             <link href="./styles/style.css" rel="stylesheet">
         <?php
