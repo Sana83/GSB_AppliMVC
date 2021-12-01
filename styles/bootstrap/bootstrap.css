@@ -6755,3 +6755,7 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.pdf{
+    background: url(./images/pdf.png) no-repeat;
+}

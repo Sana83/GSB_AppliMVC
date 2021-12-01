@@ -22,6 +22,10 @@
         <strong><u>Etat :</u></strong> <?php echo $libEtat ?>
         depuis le <?php echo $dateModif ?> <br> 
         <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
+        <div>
+        </br><button> <img class="pdf" src="./images/pdf.png"></br>Téléchargement</button>
+        </div>
+
     </div>
 </div>
 <div class="panel panel-info">

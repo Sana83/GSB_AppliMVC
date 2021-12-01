@@ -40,6 +40,7 @@
                             <option value="<?php echo $mois ?>">
                                 <?php echo $numMois . '/' . $numAnnee ?> </option>
                             <?php
+                            //sert à afficher le premier mois sur la barre de selection des mois.
                         }
                     }
                     ?>    
