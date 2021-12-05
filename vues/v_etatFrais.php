@@ -23,7 +23,7 @@
         depuis le <?php echo $dateModif ?> <br> 
         <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
         <div>
-        </br><button> <img class="pdf" src="./images/pdf.png"></br>Téléchargement</button>
+        </br><button> <img class="pdf" src="./images/pdf.png"></br>Fichier PDF</button>
         </div>
 
     </div>
@@ -75,3 +75,4 @@
         ?>
     </table>
 </div>
+<a onclick="window.open('pdf/pdf.php?id=<?php echo $_SESSION['idVisiteur'] ?>&mois=<?php echo $_SESSION['date']?>')" class="btn btn-warning" style="float: right;">Fichier PDF</a></br></br></br>
