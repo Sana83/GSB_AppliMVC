@@ -22,6 +22,7 @@
         <strong><u>Etat :</u></strong> <?php echo $libEtat ?>
         depuis le <?php echo $dateModif ?> <br> 
         <strong><u>Montant validé :</u></strong> <?php echo $montantValide ?>
+        </br><a onclick="window.open('pdf/pdf.php?id=<?php echo $_SESSION['idVisiteur'] ?>&mois=<?php echo $_SESSION['date']?>')" class="btn btn-success">Fichier PDF</a></br></br></br>
     </div>
 </div>
 <div class="panel panel-info">
@@ -71,4 +72,3 @@
         ?>
     </table>
 </div>
-<a onclick="window.open('pdf/pdf.php?id=<?php echo $_SESSION['idVisiteur'] ?>&mois=<?php echo $_SESSION['date']?>')" class="btn btn-warning" style="float: right;">Fichier PDF</a></br></br></br>
