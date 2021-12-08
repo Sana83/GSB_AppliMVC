@@ -39,11 +39,11 @@ case 'voirEtatFrais':
     $numAnnee = substr($leMois, 0, 4);
     $numMois = substr($leMois, 4, 2);
     //ajout pdf
-    foreach($lesInfosFicheFrais as $frais){
+    //foreach($lesInfosFicheFrais as $frais){
     $libEtat = $lesInfosFicheFrais['libEtat'];
     $montantValide = $lesInfosFicheFrais['montantValide'];
     $nbJustificatifs = $lesInfosFicheFrais['nbJustificatifs'];
     $dateModif = dateAnglaisVersFrancais($lesInfosFicheFrais['dateModif']);
     include 'vues/v_etatFrais.php';
 }
-}
+//}
