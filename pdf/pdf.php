@@ -1,5 +1,18 @@
 
 <?php
+/**
+ * Création du fichier PDF
+ *
+ * PHP Version 7
+ *
+ * @category  PPE
+ * @package   GSB
+ * @author    Tangui Hoarau <tangui.hoarau@hotmail.com>
+ * @copyright 2021 Réseau CERTA
+ * @license   Réseau CERTA
+ * @version   GIT: <0>
+ * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
+ */
 
 // Connexion à la BDD
 $bddname = 'gsb_frais';
