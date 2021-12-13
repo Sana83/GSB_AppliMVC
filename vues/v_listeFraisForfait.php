@@ -40,7 +40,7 @@
                     <?php
                 }
                 ?>
-                <button class="btn btn-success" type="submit">Ajouter</button>
+                <button class="btn btn-success" name="btnForfais" type="submit">Ajouter</button>
                 <button class="btn btn-danger" type="reset">Effacer</button>
             </fieldset>
         </form>

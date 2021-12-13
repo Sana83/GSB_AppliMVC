@@ -8,6 +8,8 @@
  * @package   GSB
  * @author    Cheri Bibi - Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL - CNED <jgil@ac-nice.fr>
+ * @author Hoarau Tangui <tangui.hoarau@hotmail.com>
+ * @author Erwan Lambert <>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -511,6 +513,49 @@ class PdoGsb
             );
         }
         return $lesMois;
+    }
+    
+    public function getLesMois(){
+        $requetePrepare = PdoGsb::$monPdo->prepare(
+                'SELECT fichefrais.mois AS mois FROM fichefrais '
+                . 'GROUP BY fichefrais.mois ORDER BY fichefrais.mois desc'
+        );
+        $requetePrepare->execute();
+        $lesMois = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $mois = $laLigne['mois'];
+            $numAnnee = substr($mois, 0, 4);
+            $numMois = substr($mois, 4, 2);
+            $lesMois[] = array(
+                'mois' => $mois,
+                'numAnnee' => $numAnnee,
+                'numMois' => $numMois
+            );
+        }
+        return $lesMois;
+    }
+    
+    public function getVisiteursFromMois($mois) {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+            "select CONCAT(nom, ' ', prenom)as nomvisiteur, idvisiteur as visiteur from fichefrais "
+            . "inner join visiteur on visiteur.id = fichefrais.idvisiteur "
+            . "where mois=:unMois "
+            . "AND idetat='CL'");
+        $requetePrepare->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $res = $requetePrepare->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+    
+    public function getIdFromNomVisiteur($nomVis){
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+                "select id from visiteur "
+                . "where CONCAT(nom, ' ', prenom) = :unNom "
+        );
+        $requetePrepare->bindParam(':unNom', $nomVis, PDO::PARAM_STR);
+        $requetePrepare->execute();
+        $res = $requetePrepare->fetch(PDO::FETCH_ASSOC);
+        return $res;
     }
 
     /**

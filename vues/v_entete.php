@@ -26,9 +26,10 @@
         <link href="./styles/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="./styles/style.css" rel="stylesheet">
         <?php
-        if ($estConnecteComptable) { ?>
-            <link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
-            <link href="./styles/style.css" rel="stylesheet">
+        if ($estConnecteComptable) {
+            ?>
+        <link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
+        <link href="./styles/styleComptable.css" rel="stylesheet">
         <?php
         }
         ?>
@@ -79,11 +80,9 @@
                     </div>
                 </div>
             </div>
-             <?php
-            }
-            if ($estConnecteComptable){
-                
-            ?>
+            <?php
+            } elseif ($estConnecteComptable){
+                ?>
             <div class="header">
                 <div class="row vertical-align">
                     <div class="col-md-4">
@@ -102,15 +101,15 @@
                                 </a>
                             </li>
                             <li <?php if ($uc == 'gererFrais') { ?>class="active"<?php } ?>>
-                                <a href="index.php?uc=gererFrais&action=saisirFrais">
+                                <a href="index.php?uc=valideFrais&action=selectionnerMois">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                     Valider fiche de frais
                                 </a>
                             </li>
                             <li <?php if ($uc == 'etatFrais') { ?>class="active"<?php } ?>>
-                                <a href="index.php?uc=etatFrais&action=selectionnerMois">
+                                <a href="index.php?uc=paiementFrais">
                                     <span class="glyphicon glyphicon-list-alt"></span>
-                                    Suivre le payement des fiches de frais
+                                    Suivre le paiement fiche de frais
                                 </a>
                             </li>
                             <li 
@@ -125,10 +124,13 @@
                 </div>
             </div>
             <?php
-            } 
-            ?>
-
-
-    
-         
-        
+            } else {
+                ?>   
+                <h1>
+                    <img src="./images/logo.jpg"
+                         class="img-responsive center-block"
+                         alt="Laboratoire Galaxy-Swiss Bourdin"
+                         title="Laboratoire Galaxy-Swiss Bourdin">
+                </h1>
+                <?php
+            }

@@ -71,7 +71,7 @@
                            class="form-control" value="">
                 </div>
             </div>
-            <button class="btn btn-success" type="submit" name="BoutonValide">Ajouter</button>
+            <button class="btn btn-success" name="btnHF" type="submit">Ajouter</button>
             <button class="btn btn-danger" type="reset">Effacer</button>
         </form>
     </div>

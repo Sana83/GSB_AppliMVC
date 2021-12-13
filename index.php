@@ -8,6 +8,8 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
+ * @author Hoarau Tangui <tangui.hoarau@hotmail.com>
+ * @author Erwan Lambert <> 
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -42,6 +44,12 @@ case 'etatFrais':
     break;
 case 'deconnexion':
     include 'controleurs/c_deconnexion.php';
+    break;
+case 'valideFrais':
+    include 'controleurs/c_valideFrais.php';
+    break;
+case 'paiementFrais':
+    include 'vues/v_paiementFrais.php';
     break;
 }
 require 'vues/v_pied.php';

@@ -8,6 +8,7 @@
  * @package   GSB
  * @author    Réseau CERTA <contact@reseaucerta.org>
  * @author    José GIL <jgil@ac-nice.fr>
+ * @author Hoarau Tangui <tangui.hoarau@hotmail.com>
  * @copyright 2017 Réseau CERTA
  * @license   Réseau CERTA
  * @version   GIT: <0>
@@ -48,49 +49,23 @@
                     </fieldset>
                 </form>
             </div>
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>login</th>
+                    <th>mdp</th>
+                </tr>
+                <tr>
+                    <th>comptable</th>
+                    <th>thoarau</th>
+                    <th>owxep5</th>
+                </tr>
+                <tr>
+                    <th>visiteur</th>
+                    <th>dandre</th>
+                    <th>oppg5</th>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
-<!--    <div class="idDemo">
-        <table>
-            <tr>
-            <th></th>
-                <td class="titre">Login </td>
-                <td class="titre">Mot de passe</td>
-            </tr>
-            <tr>
-                <td class="titre">Comptable </td>
-                <td> thoarau</td>
-                <td> owxep5</td>
-            </tr>
-            <tr>
-                <td class="titre">Visiteur</td>
-                <td>dandre</td>
-                <td>opgg5</td>
-            </tr>
-        </table>
-    </div>-->
-<!--<link href="./styles/bootstrap/bootstrapComptable.css" rel="stylesheet">
-            <link href="./styles/style.css" rel="stylesheet">-->
-<link href="stylesheet" href="./styles/cssLogin.css">
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Login</th>
-                <th>Mot de passe</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Comptable</td>
-                <td>thaoarau</td>
-                <td>owxep5</td>
-            </tr>
-            <tr>
-                <td>Visiteur</td>
-                <td>dandre</td>
-                <td>oppg5</td>
-            </tr>
-        </tbody>
-    </table>
